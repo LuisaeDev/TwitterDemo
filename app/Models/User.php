@@ -59,9 +59,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    // Current user's posts
-    public function posts() {
-        return $this->hasMany(Post::class);
+    // Current user's tweets
+    public function tweets() {
+        return $this->hasMany(Tweet::class);
     }
 
     /**

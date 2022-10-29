@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PostFactory extends Factory
+class TweetFactory extends Factory
 {
 
     // Demonstrative videos
@@ -32,12 +32,15 @@ class PostFactory extends Factory
         return [
             // 'uuid' => $this->faker->unique()->uuid(),
             'type' => $this->faker->randomElement(['msj', 'img', 'vid']),
-            'message' => $this->faker->text('280')
+            'message' => $this->faker->text('280'),
+            'n_comments' => rand(0, 75),
+            'n_likes' => rand(0, 200),
+            'n_retweets' => rand(0, 15)
         ];
     }
 
     /**
-    * Indicate the ref according to the post type.
+    * Indicate the ref according to the tweet type.
     *
     * @return \Illuminate\Database\Eloquent\Factories\Factory
     */

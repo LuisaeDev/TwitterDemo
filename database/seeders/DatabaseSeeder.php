@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Follower;
-use App\Models\Post;
+use App\Models\Tweet;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,12 +18,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        // Create 50 users and their posts
+        // Create 50 users and their tweets
         $nUsers = 50;
         \App\Models\User::factory()
             ->count($nUsers)
             ->has(
-                Post::factory()
+                Tweet::factory()
                     ->count(rand(0, 20))
                     ->randomType()
             )

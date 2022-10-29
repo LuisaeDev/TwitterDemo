@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('tweets', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
             $table->unsignedBigInteger('user_id');
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('ref')->nullable()->default(null);
             $table->string('message', 280);
             $table->unsignedInteger('n_comments')->default(0);
+            $table->unsignedInteger('n_retweets')->default(0);
             $table->unsignedInteger('n_likes')->default(0);
 
             // Metadata
@@ -43,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('tweets');
     }
 };

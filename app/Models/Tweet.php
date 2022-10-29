@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
 
-class Post extends Model
+class Tweet extends Model
 {
     use HasFactory;
 
