@@ -58,4 +58,25 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // Current user's tweets
+    public function tweets() {
+        return $this->hasMany(Tweet::class);
+    }
+
+    /**
+     * Users that follow the current user's model
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id');
+    }
+
+    /**
+     * Users that the current user's model follows
+     */
+    public function following()
+    {
+        return $this->belongsToMany(self::class, 'followings', 'followed_user_id', 'follower_user_id');
+    }
 }

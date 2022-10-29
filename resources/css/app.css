@@ -1,3 +1,277 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('asdasd');
+body {
+    @apply bg-white
+}
+
+/* Page */
+.page {
+    @apply
+        container
+        flex flex-row
+        mx-auto
+        xl:px-12;
+}
+
+.page__left-side {
+    @apply
+        shrink-0
+        sm:basis-20
+        xl:basis-72;
+}
+
+.page__right-side {
+    @apply
+        flex shrink
+        w-full
+        sm:basis-auto;
+}
+
+/* Feed */
+.feed {
+    @apply
+        lg:basis-3/5
+        border-r border-slate-200 min-h-screen;
+}
+
+.feed__top {
+    @apply
+        p-4
+        bg-white bg-opacity-90 backdrop-blur-sm text-xl font-black;
+}
+
+.feed__block {
+    @apply
+        py-4 px-4 border-b transition-colors cursor-pointer
+        border-slate-200 last:border-b-0
+        hover:bg-gray-100;
+}
+
+/* Sidebar */
+.sidebar {
+    @apply
+        hidden
+        lg:flex;
+}
+
+/* Tweet */
+.tweet {
+    @apply flex flex-row;
+}
+
+.tweet__image {
+    @apply
+        w-14 h-14;
+}
+
+.tweet__content {
+    @apply
+        grow
+        px-2;
+}
+
+    .tweet__heading {
+        @apply font-black leading-relaxed;
+    }
+    .tweet__author-name {
+        @apply font-black hover:underline;
+    }
+    .tweet__author-username {
+        @apply font-semibold text-gray-500;
+    }
+    .tweet__time {
+        @apply font-semibold text-gray-500;
+    }
+
+.tweet__caret {
+    @apply
+        shrink-0
+}
+.tweet__options {
+    @apply w-8 h-8 flex -mt-2 rounded-full justify-center items-center text-slate-500 hover:bg-sky-100;
+}
+
+.tweet__media {
+    @apply my-2 rounded-xl overflow-hidden relative border border-slate-200;
+}
+
+.tweet__media > * {
+    @apply w-full;
+}
+
+.tweet__actions {
+    @apply flex flex-row justify-between items-stretch pr-16;
+}
+
+.tweet__action {
+    @apply flex flex-row items-center text-slate-500;
+}
+
+.tweet__action-icon {
+    @apply flex justify-center items-center w-8 h-8 rounded-full text-lg  group-hover:bg-sky-100 group-hover:text-sky-600;
+}
+
+.tweet__action-caption {
+    @apply ml-1 text-sm font-normal group-hover:text-sky-600;
+}
+
+/* Mainbar */
+.mainbar {
+    @apply
+        fixed
+        p-2 w-full bottom-0
+        border-t bg-white border-slate-200
+
+        sm:flex sm:flex-col sm:justify-between sm:items-center
+        sm:overflow-y-scroll 
+        sm:p-2 sm:pt-1 sm:w-20 sm:h-full sm:top-0
+        sm:border-r sm:border-t-0
+
+        xl:items-stretch xl:pl-5 xl:pr-3 xl:w-72;
+}
+
+.mainbar__content {
+    @apply
+        sm:flex sm:flex-col sm:justify-start sm:items-center
+        sm:mb-6
+        xl:pr-4
+        xl:items-start;
+}
+
+.mainbar__home {
+    @apply
+        hidden
+        w-14 h-14 mb-3
+        rounded-full text-3xl text-sky-500 transition-colors
+        sm:flex items-center justify-center
+        hover:bg-sky-100;
+}
+
+.mainbar__nav {
+    @apply
+        flex flex-row justify-around
+        w-full
+        sm:flex-col sm:items-center sm:justify-start
+        xl:items-stretch;
+}
+
+.mainbar__item {
+    @apply
+        flex grow
+        sm:mb-2 sm:last:mb-0;
+}
+
+    .mainbar__nav--only-mobile {
+        @apply flex sm:hidden;
+    }
+
+    .mainbar__nav--hidden-mobile {
+        @apply hidden sm:flex;
+    }
+
+    .mainbar__item-inner {
+        @apply
+            flex flex-row justify-center        
+            w-full h-12 rounded-full transition-colors
+            sm:w-14 sm:h-14
+            xl:w-auto xl:h-auto xl:pl-3 xl:pr-7 xl:py-3
+            group-hover:bg-gray-200;
+    }
+
+    .mainbar__item-icon {
+        @apply
+            relative
+            flex items-center justify-center
+            text-2xl
+            xl:w-7;
+    }
+
+        .mainbar__item-dot {
+            @apply 
+                absolute 
+                w-2 h-2 right-0 top-2
+                rounded-full bg-blue-500
+                sm:top-3
+                xl:top-0;
+        }
+
+    .mainbar__item-text {
+        @apply
+            hidden
+            ml-4
+            font-semibold text-xl
+            xl:inline;
+    }
+
+    .mainbar__item--active .mainbar__item-text {
+        @apply font-bold;
+    }
+
+.mainbar__tweet {
+    @apply
+        hidden
+        w-14 h-14
+        rounded-full text-center text-lg font-bold text-white bg-sky-500 transition-colors
+        sm:flex sm:justify-center sm:items-center
+        xl:block xl:py-3 xl:w-full xl:h-auto
+        hover:bg-sky-400;
+}
+
+    .mainbar__tweet-icon {
+        @apply
+            inline
+            text-xl
+            xl:hidden;
+    }
+
+    .mainbar__tweet-text {
+        @apply
+            hidden
+            xl:inline;
+    }
+
+.mainbar__bottom {
+    @apply
+        hidden
+        w-14 h-14
+        p-1 rounded-full
+        sm:block
+        xl:p-2 xl:pr-4
+        xl:flex xl:justify-between xl:items-stretch xl:w-auto xl:h-auto
+        hover:bg-gray-200;
+}
+
+    .mainbar__bottom-image {
+        @apply
+            w-full
+            xl:w-12 xl:h-12;
+    }
+
+    .mainbar__bottom-captions {
+        @apply
+            hidden
+            grow flex-col justify-center
+            px-2 w-24
+            font-bold
+            xl:flex;
+    }
+
+        .mainbar__bottom-name {
+            @apply
+                font-black text-ellipsis overflow-hidden leading-6 h-6;
+        }
+
+        .mainbar__bottom-username {
+            @apply
+                font-semibold text-sm text-gray-500 text-ellipsis overflow-hidden leading-4 h-4;
+        }
+
+    .mainbar__bottom-caret {
+        @apply
+            hidden shrink-0
+            xl:flex items-center
+            text-lg;
+    }

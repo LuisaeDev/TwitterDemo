@@ -1,0 +1,7 @@
+<x-guest-layout>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea dignissimos cupiditate iste. Accusantium odit repellendus velit doloribus debitis facere tempora deleniti, ipsum commodi architecto consequuntur voluptas? Minima odit reiciendis quasi.
+    Impedit, veniam? Molestias optio expedita soluta qui voluptatum commodi minima tenetur. Reprehenderit, earum. Accusantium enim numquam magni, tempora aperiam repudiandae doloremque ratione aliquam cumque suscipit id aliquid nostrum a consequuntur?
+    Voluptatum atque asperiores alias labore culpa quia voluptate repellendus. Similique eveniet voluptatum, deserunt labore pariatur doloremque voluptatem esse repudiandae, corrupti repellendus enim, ratione perspiciatis dolor nemo tempora est consequuntur! Ipsa.
+    Inventore perspiciatis, atque quae explicabo hic, aspernatur esse quasi autem assumenda recusandae totam vitae ab placeat consectetur iusto obcaecati illum a odit tempore, dolorem ipsam quam quas aperiam? Eligendi, quasi.
+    Repellendus perspiciatis soluta delectus dicta itaque similique dolorum, consequatur ex ipsam accusamus repudiandae molestiae suscipit quod laudantium cumque cum placeat ratione amet ipsa doloremque deleniti nihil nesciunt nisi vero. Quae?</p>
+</x-guest-layout>
