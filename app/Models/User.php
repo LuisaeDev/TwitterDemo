@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -35,6 +36,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
+        'id',
+        'pivot',
         'password',
         'remember_token',
         'two_factor_recovery_codes',
@@ -65,18 +68,33 @@ class User extends Authenticatable
     }
 
     /**
-     * Users that follow the current user's model
-     */
-    public function followers()
-    {
-        return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id');
-    }
-
-    /**
      * Users that the current user's model follows
      */
     public function following()
     {
-        return $this->belongsToMany(self::class, 'followings', 'followed_user_id', 'follower_user_id');
+        return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id')
+            ->select('uuid', 'name', 'username');
+    }
+
+    /**
+     * Users that follow the current user's model
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, 'followings', 'followed_user_id', 'follower_user_id')
+            ->select('uuid', 'name', 'username');
+    }
+
+    protected static function boot()
+    {
+        // Boot other traits on the Model
+        parent::boot();
+
+        /**
+         * Listen for the 'creating' event on the Track Model.
+         */
+        static::creating(function ($model) {
+            $model->setAttribute('uuid', Str::uuid()->toString());
+        });
     }
 }

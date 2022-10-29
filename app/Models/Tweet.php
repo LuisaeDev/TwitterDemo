@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
 
 class Tweet extends Model
@@ -23,13 +22,9 @@ class Tweet extends Model
 
         /**
          * Listen for the 'creating' event on the Track Model.
-         * Sets the 'id' to a UUID using Str::uuid() on the instance being created
-        */
+         */
         static::creating(function ($model) {
-
-            // Dynamically set the primary key
             $model->setAttribute('uuid', Str::uuid()->toString());
         });
     }
-
 }
