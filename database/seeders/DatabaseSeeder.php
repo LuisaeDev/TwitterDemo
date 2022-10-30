@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             ->count($nUsers)
             ->has(
                 Tweet::factory()
-                    ->count(rand(0, 20))
+                    ->count(rand(0, 100))
                     ->randomType()
             )
             ->create();
