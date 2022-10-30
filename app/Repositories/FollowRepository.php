@@ -24,7 +24,7 @@ class FollowRepository implements FollowInterface
         $followers = $user->followers();
 
         // Return paginated data
-        return $followers->paginate();
+        return $followers->paginate(config('twitter.followers.paginate_per_page'));
     }
 
     /**
