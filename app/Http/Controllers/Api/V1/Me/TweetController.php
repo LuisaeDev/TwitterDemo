@@ -45,9 +45,7 @@ class TweetController extends Controller
         $tweets = $this->tweetRepo->index($user);
 
         // Emit the response
-        return $this->responseData([
-           'tweets' => new TweetCollection($tweets)
-        ]);
+        return new TweetCollection($tweets);
     }
 
     /**

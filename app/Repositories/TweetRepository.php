@@ -6,6 +6,7 @@ use App\Exceptions\TweetException;
 use App\Models\Tweet;
 use App\Models\User;
 use App\Contracts\TweetInterface;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class TweetRepository implements TweetInterface
 {
@@ -16,7 +17,7 @@ class TweetRepository implements TweetInterface
      * @param User $user
      * @return array
      */
-    public function index(User $user)
+    public function index(User $user): Paginator
     {
         // Obtain user's tweets
         $tweets = Tweet::query()
@@ -25,7 +26,7 @@ class TweetRepository implements TweetInterface
             ->orderByDesc('created_at', 'DESC');
 
         // Return paginated data
-        return $tweets->paginate();
+        return $tweets->paginate(config('twitter.tweets.paginate_per_page'));
     }
 
     /**

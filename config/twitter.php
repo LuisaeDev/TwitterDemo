@@ -1,7 +1,13 @@
 <?php
 
 return [
+    'tweets' => [
+        'paginate_per_page' => 10
+    ],
+    'followers' => [
+        'paginate_per_page' => 10
+    ],
     'feed' => [
-        'per_page' => 10
-    ]
+        'paginate_per_page' => 10
+    ],
 ];
