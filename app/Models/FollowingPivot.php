@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Following extends Model
+class FollowingPivot extends Pivot
 {
     use HasFactory;
+
+    protected $table = 'followings';
 
     protected $fillable = ['user_id', 'follow_user_id'];
 
