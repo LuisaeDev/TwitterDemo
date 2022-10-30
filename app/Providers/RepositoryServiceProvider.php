@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\TweetInterface;
+use App\Repositories\TweetRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -13,6 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(TweetInterface::class, TweetRepository::class);
     }
 
     /**

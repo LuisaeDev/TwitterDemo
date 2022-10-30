@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class TweetResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     */
+    public function toArray($request)
+    {
+        return array(
+            'uuid' => $this->uuid,
+            'message' => $this->message,
+            'email' => $this->email,
+            'type' => $this->type,
+            'ref' => $this->ref,
+            'n_comments' => $this->n_comments,
+            'n_retweets' => $this->n_retweets,
+            'n_likes' => $this->n_likes,
+            'created_at' => $this->created_at,
+        );
+    }
+}
