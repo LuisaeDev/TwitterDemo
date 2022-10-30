@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable
@@ -36,8 +36,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'id',
-        'pivot',
         'password',
         'remember_token',
         'two_factor_recovery_codes',
@@ -62,18 +60,17 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function getAtUsernameAttribute() {
+        return '@' . $this->username;
+    }
+
+    public function getProfileUrlAttribute() {
+        return url($this->at_username);
+    }
+
     // Current user's tweets
     public function tweets() {
         return $this->hasMany(Tweet::class);
-    }
-
-    /**
-     * Users that the current user's model follows
-     */
-    public function following()
-    {
-        return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id')
-            ->select('uuid', 'name', 'username');
     }
 
     /**
@@ -82,8 +79,44 @@ class User extends Authenticatable
     public function followers()
     {
         return $this->belongsToMany(self::class, 'followings', 'followed_user_id', 'follower_user_id')
-            ->select('uuid', 'name', 'username');
+            ->using(FollowingPivot::class)
+            ->withTimestamps();
     }
+
+    /**
+     * Users that the current user's model follows
+     */
+    public function following()
+    {
+        return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id')
+            ->using(FollowingPivot::class)
+            ->withTimestamps();
+    }
+
+    public function addFollower()
+    {
+        $this->n_follower++;
+        $this->save();
+    }
+
+    public function addFollowed()
+    {
+        $this->n_followed++;
+        $this->save();
+    }
+
+    public function subFollower()
+    {
+        $this->n_follower--;
+        $this->save();
+    }
+
+    public function subFollowed()
+    {
+        $this->n_followed--;
+        $this->save();
+    }
+
 
     protected static function boot()
     {

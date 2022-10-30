@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('users', 'uuid')) {
-            Schema::table('users', function (Blueprint $table) {
-                $table->uuid('uuid')->after('id')->unique();
-            });
-        }
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedInteger('n_follower')->default(0)->after('profile_photo_path');
+            $table->unsignedInteger('n_followed')->default(0)->after('n_follower');
+        });
     }
 
     /**
@@ -28,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('uuid');
+            $table->dropColumn('n_follower');
+            $table->dropColumn('n_followed');
         });
     }
 };
