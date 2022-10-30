@@ -24,6 +24,13 @@ class TweetResource extends JsonResource
             'n_retweets' => $this->n_retweets,
             'n_likes' => $this->n_likes,
             'created_at' => $this->created_at,
+            'user' => [
+                'uuid' => $this->user->uuid,
+                'name' => $this->user->name,
+                'at_username' => $this->user->username,
+                'profile_url' => $this->user->profile_url,
+                'profile_photo_path' => $this->user->profile_photo_path,
+            ]
         );
     }
 }
