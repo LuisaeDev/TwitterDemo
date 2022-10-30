@@ -25,7 +25,7 @@ Route::get('ping', function() {
     return 'pong';
 });
 
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->middleware(['auth:api'])->group(function () {
 
     // Me / Tweets
     Route::get('me/tweets',                [ TweetController::class, 'index' ]);
