@@ -36,14 +36,13 @@ class FollowController extends Controller
     {
 
         // Get the current user
-        $user = User::find(1);
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // Call the repository
         $followers = $this->followRepo->followers($user);
 
         // Emit the response
-        return new FollowCollection(Tweet::latest()->paginate());
+        return new FollowCollection($followers);
     }
 
     /**
@@ -56,8 +55,7 @@ class FollowController extends Controller
     {
 
         // Get the current user
-        $user = User::find(1);
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // Call the repository
         $following = $this->followRepo->following($user);
@@ -80,8 +78,7 @@ class FollowController extends Controller
         ]);
 
         // Get the current user
-        // $followerUser = Auth::user();
-        $followerUser = User::find(1);
+        $followerUser = Auth::user();
         $followedUser = User::where('uuid', $data['user_uuid'])->first();
 
         // Call the repository
@@ -105,8 +102,7 @@ class FollowController extends Controller
         ]);
 
         // Get the current user
-        // $followerUser = Auth::user();
-        $followerUser = User::find(1);
+        $followerUser = Auth::user();
         $followedUser = User::where('uuid', $data['user_uuid'])->first();
 
         // Call the repository

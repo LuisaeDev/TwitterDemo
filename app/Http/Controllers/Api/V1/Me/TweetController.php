@@ -38,8 +38,7 @@ class TweetController extends Controller
     {
 
         // Get the current user
-        $user = User::find(1);
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // Call the repository
         $tweets = $this->tweetRepo->index($user);
@@ -66,8 +65,7 @@ class TweetController extends Controller
         $data['type'] = 'msj';
 
         // Get the current user
-        $user = User::find(1);
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // Call the repository
         $tweet = $this->tweetRepo->create($user, $data);
@@ -89,8 +87,7 @@ class TweetController extends Controller
     {
     
         // Get the current user
-        $user = User::find(1);
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // Validate if the current user can perform the delete action
         if (Gate::denies('read-tweet', $tweet)) {
@@ -117,8 +114,7 @@ class TweetController extends Controller
     {
 
         // Get the current user
-        $user = User::find(1);
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // Validate if the current user can perform the delete action
         if (Gate::denies('delete-tweet', $tweet)) {
