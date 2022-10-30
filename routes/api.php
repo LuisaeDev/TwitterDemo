@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Me\FeedController;
 use App\Http\Controllers\Api\V1\Me\TweetController;
 use App\Http\Controllers\Api\V1\Me\FollowController;
 use Illuminate\Http\Request;
@@ -38,4 +39,6 @@ Route::prefix('v1')->group(function () {
     Route::post('me/follow',   [ FollowController::class, 'follow' ]);
     Route::post('me/unfollow', [ FollowController::class, 'unfollow' ]);
 
+    // Me / Feed
+    Route::get('me/feed', [ FeedController::class, 'index' ]);
 });
