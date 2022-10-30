@@ -36,7 +36,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'id',
         'pivot',
         'password',
         'remember_token',
@@ -62,6 +61,14 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function getAtUsernameAttribute() {
+        return '@' . $this->username;
+    }
+
+    public function getProfileUrlAttribute() {
+        return url($this->at_username);
+    }
+
     // Current user's tweets
     public function tweets() {
         return $this->hasMany(Tweet::class);
@@ -73,6 +80,7 @@ class User extends Authenticatable
     public function following()
     {
         return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id')
+            ->withTimestamps()
             ->select('uuid', 'name', 'username');
     }
 
@@ -82,6 +90,7 @@ class User extends Authenticatable
     public function followers()
     {
         return $this->belongsToMany(self::class, 'followings', 'followed_user_id', 'follower_user_id')
+            ->withTimestamps()
             ->select('uuid', 'name', 'username');
     }
 
