@@ -36,7 +36,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'pivot',
         'password',
         'remember_token',
         'two_factor_recovery_codes',
@@ -75,24 +74,49 @@ class User extends Authenticatable
     }
 
     /**
-     * Users that the current user's model follows
-     */
-    public function following()
-    {
-        return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id')
-            ->withTimestamps()
-            ->select('uuid', 'name', 'username');
-    }
-
-    /**
      * Users that follow the current user's model
      */
     public function followers()
     {
         return $this->belongsToMany(self::class, 'followings', 'followed_user_id', 'follower_user_id')
-            ->withTimestamps()
-            ->select('uuid', 'name', 'username');
+            ->using(FollowingPivot::class)
+            ->withTimestamps();
     }
+
+    /**
+     * Users that the current user's model follows
+     */
+    public function following()
+    {
+        return $this->belongsToMany(self::class, 'followings', 'follower_user_id', 'followed_user_id')
+            ->using(FollowingPivot::class)
+            ->withTimestamps();
+    }
+
+    public function addFollower()
+    {
+        $this->n_follower++;
+        $this->save();
+    }
+
+    public function addFollowed()
+    {
+        $this->n_followed++;
+        $this->save();
+    }
+
+    public function subFollower()
+    {
+        $this->n_follower--;
+        $this->save();
+    }
+
+    public function subFollowed()
+    {
+        $this->n_followed--;
+        $this->save();
+    }
+
 
     protected static function boot()
     {
