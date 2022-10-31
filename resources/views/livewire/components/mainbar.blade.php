@@ -124,7 +124,7 @@
     </div>
 
     {{-- Mainbar Bottom --}}
-    <a href="#" class="mainbar__bottom">
+    <a href="{{ $user->profile_url }}" class="mainbar__bottom">
         
         <div class="shrink-0">
             <img class="mainbar__bottom-image" src="{{ $user->profile_photo_path }}" alt="User profile image">
