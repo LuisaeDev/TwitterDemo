@@ -127,12 +127,12 @@
     <a href="#" class="mainbar__bottom">
         
         <div class="shrink-0">
-            <img class="mainbar__bottom-image" src="https://www.luisae.dev/wp-content/uploads/2022/10/img_luis-profile.png" alt="User profile image">
+            <img class="mainbar__bottom-image" src="{{ $user->profile_photo_path }}" alt="User profile image">
         </div>
 
         <div class="mainbar__bottom-captions">
-            <div class="mainbar__bottom-name">Luis Aguilar Espinoza</div>
-            <div class="mainbar__bottom-username">@LuisaeDev</div>
+            <div class="mainbar__bottom-name">{{ $user->name }}</div>
+            <div class="mainbar__bottom-username">{{ $user->at_username }}</div>
         </div>
 
         <div class="mainbar__bottom-caret">
