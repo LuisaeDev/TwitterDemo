@@ -16,8 +16,7 @@ class FeedPage extends Component
     {
 
         // Obtain the current user
-        $user = User::find(1);
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // Return the view
         return view('livewire.pages.feed-page',
