@@ -47,7 +47,7 @@ body {
 .feed__block {
     @apply
         py-4 px-4 border-b transition-colors cursor-pointer
-        border-slate-200 last:border-b-0
+        border-slate-200
         hover:bg-gray-100;
 }
 
@@ -272,6 +272,53 @@ body {
         }
 
     .mainbar__bottom-caret {
+        @apply
+            hidden shrink-0
+            xl:flex items-center
+            text-lg;
+    }
+
+
+
+
+
+.followers_item {
+    @apply
+        hidden
+        w-14 h-14
+        p-1 rounded-full
+        sm:block
+        xl:p-2 xl:pr-4
+        xl:flex xl:justify-between xl:items-stretch xl:w-auto xl:h-auto
+        hover:bg-gray-200;
+}
+
+    .followers_item-image {
+        @apply
+            w-full rounded-full
+            xl:w-12 xl:h-12;
+    }
+
+    .followers_item-captions {
+        @apply
+            hidden
+            grow flex-col justify-center
+            px-2 w-24
+            font-bold
+            xl:flex;
+    }
+
+        .followers_item-name {
+            @apply
+                font-black text-ellipsis overflow-hidden leading-6 h-6;
+        }
+
+        .followers_item-username {
+            @apply
+                font-semibold text-sm text-gray-500 text-ellipsis overflow-hidden leading-4 h-4;
+        }
+
+    .followers_item-caret {
         @apply
             hidden shrink-0
             xl:flex items-center

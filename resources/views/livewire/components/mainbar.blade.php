@@ -23,13 +23,13 @@
                 </div>
             </a>
 
-            <a href="#" class="mainbar__item mainbar__nav--hidden-mobile group">
+            <a href="{{ route('followers') }}" class="mainbar__item mainbar__nav--hidden-mobile group">
                 <div class="mainbar__item-inner">
                     <div class="mainbar__item-icon">
                         <i class="fa-solid fa-hashtag"></i>
                     </div>
                     <div class="mainbar__item-text">
-                        Explorar
+                        Seguidores
                     </div>
                 </div>
             </a>
@@ -51,7 +51,7 @@
                         <i class="fa-regular fa-bell"></i>
                     </div>
                     <div class="mainbar__item-text">
-                        Notificaciones
+                        Siguiendo
                     </div>
                 </div>
             </a>

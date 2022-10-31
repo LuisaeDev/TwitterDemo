@@ -19,10 +19,7 @@
         @endif
         @if ($tweet->type == 'vid')
             <div class="tweet__media">
-
                 <iframe width="560" height="315" src="{{ $tweet->ref }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
             </div>
         @endif
         <div class="tweet__actions">
