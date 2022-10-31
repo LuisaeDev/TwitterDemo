@@ -248,7 +248,7 @@ body {
 
     .mainbar__bottom-image {
         @apply
-            w-full
+            w-full rounded-full
             xl:w-12 xl:h-12;
     }
 
