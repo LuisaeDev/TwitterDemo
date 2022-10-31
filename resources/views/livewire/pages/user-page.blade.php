@@ -1,0 +1,1 @@
+@livewire('components.tweets', [ 'user' => $user ])

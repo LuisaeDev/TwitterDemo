@@ -1,0 +1,1 @@
+@livewire('components.feed', [ 'user' => $user ])
