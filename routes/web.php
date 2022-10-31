@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', FeedPage::class)->name('home');
+Route::get('/', FeedPage::class)->middleware(['auth'])->name('home');
 Route::get('/@{username}', UserPage::class)->where('name','[a-zA-Z0-9]+');
