@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Pages\FeedPage;
+use App\Http\Livewire\Pages\FollowersPage;
 use App\Http\Livewire\Pages\UserPage;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', FeedPage::class)->middleware(['auth'])->name('home');
 Route::get('/@{username}', UserPage::class)->where('name','[a-zA-Z0-9]+');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/', FeedPage::class)->name('home');
+    Route::get('followers', FollowersPage::class)->name('followers');
+});
+
