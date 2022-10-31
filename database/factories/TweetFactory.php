@@ -51,7 +51,9 @@ class TweetFactory extends Factory
 
             switch($attributes['type']) {
                 case 'img':
-                    $attributes['ref'] = $this->faker->imageUrl(1200, 800, 'image', true);
+                    // $attributes['ref'] = $this->faker->imageUrl(1200, 800);
+                    $attributes['ref'] = 'https://picsum.photos/id/' . rand(1,500) . '/1200/800';
+                    
                     break;
                 case 'vid':
                     $attributes['ref'] = $this->faker->randomElement($this->videos);
