@@ -55,5 +55,10 @@ class DatabaseSeeder extends Seeder
             $user = User::find($follower);
             $user->following()->sync($following);
         }
+
+        // Update the email for the first user
+        $user = User::find(1);
+        $user->email = 'hola@koombea.com';
+        $user->save();
     }
 }
